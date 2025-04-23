@@ -6,8 +6,12 @@ import sklearn
 
 
 # Load the encoder, scaler, and trained model from saved files
-scaler = pickle.load(open("scalar.pkl", 'rb'))  # Load the scaler
-model_gbc = pickle.load(open("model_gr.pkl", 'rb'))  # Load the trained model
+# scaler = pickle.load(open("scalar.pkl", 'rb'))  # Load the scaler
+with open("scalar.pkl", "rb") as f:
+    scaler = pickle.load(f)
+with open("model_gr.pkl", "rb") as f:
+    model_gbc = pickle.load(f)
+# model_gbc = pickle.load(open("model_gr.pkl", 'rb'))  # Load the trained model
 
 def predict_chronic_disease(age, bp, sg, al, hemo, sc, htn, dm, cad, appet, pc):
     # Create a DataFrame with input variables, following the correct order
